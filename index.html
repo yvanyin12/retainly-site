@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Retainly — Digital wallet loyalty & prepaid for businesses</title>
-  <meta name="description" content="Retainly helps restaurants run points, prepaid bundles, punch cards and subscriptions stored in digital wallets like Apple Wallet and Google Pay. No app. Scan at checkout. Auto-updates."/>
+  <title>Retainly — Digital wallet loyalty & prepaid for restaurants</title>
+  <meta name="description" content="Retainly helps restaurants run points, prepaid bundles, punch cards and subscriptions — stored in digital wallets like Apple Wallet and Google Pay. No app. Scan at checkout. Auto-updates."/>
+
+  <!-- Calendly popup widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+
   <style>
     :root{
       --bg:#070A12;
       --border: rgba(255,255,255,.12);
-      --border2: rgba(255,255,255,.09);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.68);
       --muted2: rgba(255,255,255,.52);
@@ -86,6 +89,7 @@
       cursor:pointer;
       transition:.18s ease;
       box-shadow: 0 8px 24px rgba(0,0,0,.22);
+      appearance:none;
     }
     .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.07)}
     .btn.primary{
@@ -578,9 +582,9 @@
         </div>
 
         <div class="nav-cta">
-          <a class="btn small menu" href="#demo">Request demo</a>
+          <button class="btn small menu" type="button" data-calendly>Book a call</button>
           <a class="btn small" href="#pricing">See pricing</a>
-          <a class="btn small primary" href="#demo">Request demo</a>
+          <button class="btn small primary" type="button" data-calendly>Book a call</button>
         </div>
       </div>
     </div>
@@ -597,7 +601,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn primary" href="#demo">Request a demo</a>
+          <button class="btn primary" type="button" data-calendly>Book a call</button>
           <a class="btn" href="#features">Explore features</a>
         </div>
 
@@ -609,7 +613,6 @@
         </div>
 
         <div class="hero-grid">
-          <!-- Restaurant Dashboard -->
           <div class="panel">
             <div class="panel-inner">
               <div class="badge">Built for cafés, lunch spots, and fast-casual restaurants</div>
@@ -690,7 +693,6 @@
             </div>
           </div>
 
-          <!-- Customer Pass -->
           <div class="panel">
             <div class="panel-inner">
               <div class="badge">Customer pass (digital wallet)</div>
@@ -728,7 +730,7 @@
                   </div>
 
                   <div class="pass-actions">
-                    <a class="btn primary" href="#demo" style="width:100%">Request demo</a>
+                    <button class="btn primary" type="button" data-calendly style="width:100%">Book a call</button>
                     <a class="btn" href="#how" style="width:100%">How it works</a>
                   </div>
                 </div>
@@ -839,7 +841,7 @@
               <li><span class="bullet"></span> Email support</li>
             </ul>
             <div class="price-actions">
-              <a class="btn primary" href="#demo">Request free demo</a>
+              <button class="btn primary" type="button" data-calendly>Book a call</button>
               <a class="btn" href="#features">See features</a>
             </div>
           </div>
@@ -857,8 +859,8 @@
               <li><span class="bullet"></span> Analytics and campaigns</li>
             </ul>
             <div class="price-actions">
-              <a class="btn primary" href="#demo">Talk to sales</a>
-              <a class="btn" href="#demo">Book a call</a>
+              <button class="btn primary" type="button" data-calendly>Book a call</button>
+              <button class="btn" type="button" data-calendly>Schedule a demo</button>
             </div>
           </div>
         </div>
@@ -872,7 +874,7 @@
         <div class="section-head">
           <div>
             <h2>Request a demo</h2>
-            <p class="section-desc">Send your info and what you want to offer.</p>
+            <p class="section-desc">Send your info and what you want to offer, or book a call directly.</p>
           </div>
         </div>
 
@@ -904,7 +906,7 @@
 
             <div class="form-actions">
               <button class="btn primary" type="submit">Send</button>
-              <a class="btn" href="#top">Back to top</a>
+              <button class="btn" type="button" data-calendly>Book a call</button>
             </div>
           </form>
 
@@ -942,8 +944,26 @@
     </div>
   </main>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Calendly popup
+    const calendlyUrl = "https://calendly.com/admin-retainly/30min";
+    function openCalendly() {
+      if (window.Calendly && window.Calendly.initPopupWidget) {
+        window.Calendly.initPopupWidget({ url: calendlyUrl });
+      } else {
+        window.open(calendlyUrl, "_blank", "noopener");
+      }
+    }
+    document.querySelectorAll('[data-calendly]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCalendly();
+      });
+    });
   </script>
 </body>
 </html>
