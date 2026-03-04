@@ -1,495 +1,949 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Retainly</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{
-font-family: Arial;
-margin:0;
-background:#f8f8f8;
-text-align:center;
-}
-
-.hero{
-background:black;
-color:white;
-padding:80px 20px;
-}
-
-.section{
-padding:60px 20px;
-}
-
-.card{
-background:white;
-padding:20px;
-margin:15px;
-border-radius:10px;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
-display:inline-block;
-width:250px;
-}
-
-button{
-background:black;
-color:white;
-padding:15px 25px;
-border:none;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<div class="hero">
-<h1>Retainly</h1>
-<p>Loyalty & prepaid programs for restaurants</p>
-<button>Request Demo</button>
-</div>
-
-<div class="section">
-<h2>Features</h2>
-
-<div class="card">
-<h3>Points Rewards</h3>
-<p>Customers earn points and redeem rewards.</p>
-</div>
-
-<div class="card">
-<h3>Meal Bundles</h3>
-<p>Sell prepaid meals like 10 lunches.</p>
-</di<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Retainly — Apple Wallet loyalty & prepaid for restaurants</title>
-  <meta name="description" content="Retainly helps restaurants run loyalty, prepaid bundles, and subscriptions with Apple Wallet passes. No app needed." />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Retainly — Digital wallet loyalty & prepaid for businesses</title>
+  <meta name="description" content="Retainly helps restaurants run points, prepaid bundles, punch cards and subscriptions stored in digital wallets like Apple Wallet and Google Pay. No app. Scan at checkout. Auto-updates."/>
   <style>
     :root{
-      --bg:#0b0f17;
-      --card:#111827;
-      --muted:#9ca3af;
-      --text:#e5e7eb;
-      --brand:#7c3aed;
-      --brand2:#22c55e;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 18px 45px rgba(0,0,0,.45);
-      --radius:18px;
-      --max:1100px;
+      --bg:#070A12;
+      --border: rgba(255,255,255,.12);
+      --border2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.52);
+      --brand: #6D5CFF;
+      --brand2:#22D3EE;
+      --shadow: 0 16px 44px rgba(0,0,0,.48);
+      --shadow2: 0 10px 28px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;background: radial-gradient(1200px 700px at 20% 0%, rgba(124,58,237,.25), transparent 60%),
-                                                         radial-gradient(900px 600px at 80% 10%, rgba(34,197,94,.18), transparent 55%),
-                                                         var(--bg); color:var(--text);}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 18px;}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background: radial-gradient(1200px 700px at 70% -10%, rgba(109,92,255,.28), transparent 60%),
+                  radial-gradient(900px 520px at 10% 10%, rgba(34,211,238,.16), transparent 60%),
+                  radial-gradient(700px 520px at 90% 60%, rgba(34,211,238,.10), transparent 62%),
+                  var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px;}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border:1px solid var(--border);
+      background:rgba(255,255,255,.04); border-radius:999px;
+      color:var(--muted); font-size:13px;
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow:0 0 18px rgba(109,92,255,.35);
+    }
+
+    /* NAV */
     .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-      position: sticky; top:0; backdrop-filter: blur(10px);
-      background: rgba(11,15,23,.55); border-bottom:1px solid var(--line);
-      padding: 14px 18px; z-index: 20;
+      position:sticky; top:0; z-index:10;
+      background: linear-gradient(to bottom, rgba(7,10,18,.88), rgba(7,10,18,.55));
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;}
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+    }
     .logo{
-      width:34px; height:34px; border-radius:12px; background:
-      radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%),
-      linear-gradient(135deg, var(--brand), #2563eb);
-      box-shadow: 0 10px 25px rgba(124,58,237,.25);
+      display:flex; align-items:center; gap:10px; font-weight:750;
+      letter-spacing:.2px;
     }
-    .navlinks{display:flex; gap:18px; align-items:center; color: var(--muted); font-weight:600; font-size: 14px;}
-    .navlinks a:hover{color:var(--text)}
+    .logo-mark{
+      width:32px; height:32px; border-radius:10px;
+      background: radial-gradient(12px 12px at 25% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+                  linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 14px 35px rgba(109,92,255,.20);
+    }
+    .nav-links{display:flex; gap:18px; align-items:center; color:var(--muted); font-size:14px;}
+    .nav-links a{padding:8px 10px; border-radius:10px;}
+    .nav-links a:hover{background:rgba(255,255,255,.06); color:rgba(255,255,255,.86);}
+    .nav-cta{display:flex; gap:10px; align-items:center;}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 12px 14px; border-radius: 12px; border:1px solid var(--line);
-      background: rgba(255,255,255,.04); color: var(--text); font-weight:700;
+      padding:11px 14px; border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:rgba(255,255,255,.88);
+      font-weight:650;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,.22);
     }
-    .btn:hover{transform: translateY(-1px); transition: .15s ease; background: rgba(255,255,255,.06);}
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.07)}
     .btn.primary{
-      border: none;
-      background: linear-gradient(135deg, var(--brand), #2563eb);
-      box-shadow: 0 18px 40px rgba(37,99,235,.18);
+      border-color: rgba(109,92,255,.45);
+      background: linear-gradient(135deg, rgba(109,92,255,.95), rgba(34,211,238,.70));
+      box-shadow: 0 18px 44px rgba(109,92,255,.20);
     }
-    .btn.primary:hover{filter: brightness(1.05);}
+    .btn.primary:hover{filter:saturate(1.08) brightness(1.02)}
+    .btn.small{padding:9px 12px; font-size:14px;}
+    .menu{display:none}
 
-    .hero{padding: 58px 0 26px;}
-    .grid{
-      display:grid; grid-template-columns: 1.15fr .85fr; gap: 28px; align-items: center;
+    /* HERO */
+    .hero{padding: 54px 0 22px;}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:18px;
     }
-    @media (max-width: 900px){
-      .grid{grid-template-columns: 1fr; }
-      .navlinks{display:none}
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(36px, 4.2vw, 54px);
+      line-height: 1.02;
+      letter-spacing:-.7px;
     }
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      padding: 8px 12px; border-radius: 999px;
-      border:1px solid var(--line); background: rgba(255,255,255,.04);
-      color: var(--muted); font-weight:700; font-size: 13px;
+    .sub{
+      color:var(--muted);
+      font-size: clamp(15px, 1.2vw, 18px);
+      line-height:1.55;
+      margin:0 0 18px;
+      max-width: 56ch;
     }
-    .dot{width:8px;height:8px;border-radius:99px;background: var(--brand2); box-shadow: 0 0 0 6px rgba(34,197,94,.12);}
-    h1{margin: 14px 0 12px; font-size: 54px; line-height: 1.02; letter-spacing: -.7px;}
-    @media (max-width: 520px){ h1{font-size: 40px;} }
-    .sub{color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 54ch;}
-    .cta{display:flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;}
-    .small{margin-top: 12px; color: var(--muted); font-size: 13px;}
-    .small b{color: var(--text);}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
+    .note{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:13px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .note span{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
 
-    .mock{
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    /* PANELS */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
       box-shadow: var(--shadow);
       overflow:hidden;
+      position:relative;
     }
-    .mockTop{
-      display:flex; justify-content: space-between; align-items:center;
-      padding: 14px 14px; border-bottom: 1px solid var(--line);
-      color: var(--muted); font-weight:700; font-size: 13px;
+    .panel::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(650px 260px at 30% 0%, rgba(109,92,255,.22), transparent 60%),
+                  radial-gradient(520px 240px at 70% 20%, rgba(34,211,238,.16), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
     }
-    .mockBody{padding: 16px;}
-    .pass{
+    .panel-inner{position:relative; padding: 16px;}
+
+    .badge{
+      display:inline-flex; align-items:center;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+      width:max-content;
+    }
+
+    /* UPGRADED DASHBOARD MOCK */
+    .dash{
+      margin-top:12px;
       border-radius: 20px;
-      padding: 18px 18px;
-      background: radial-gradient(800px 260px at 20% 0%, rgba(124,58,237,.35), transparent 55%),
-                  radial-gradient(700px 240px at 90% 10%, rgba(34,197,94,.22), transparent 52%),
-                  rgba(0,0,0,.25);
-      border: 1px solid rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(500px 200px at 10% 0%, rgba(109,92,255,.18), transparent 60%),
+        radial-gradient(520px 240px at 90% 20%, rgba(34,211,238,.12), transparent 62%),
+        rgba(7,10,18,.55);
+      padding: 14px;
+      box-shadow: var(--shadow2);
     }
-    .passHead{display:flex; align-items:center; justify-content: space-between;}
-    .passTitle{font-weight:900; font-size: 18px; letter-spacing:.2px;}
-    .badge{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.15); color: var(--text); background: rgba(255,255,255,.05); font-weight:800;}
-    .balance{margin: 16px 0 8px; font-size: 34px; font-weight: 1000; letter-spacing: -.5px;}
-    .row{display:flex; justify-content: space-between; gap: 12px; color: var(--muted); font-weight: 700; font-size: 13px;}
-    .code{
-      margin-top: 14px;
-      border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.18);
-      padding: 12px;
-      display:flex; align-items:center; justify-content: space-between;
+    .dash-top{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      color:rgba(255,255,255,.82);
+      margin-bottom:12px;
+    }
+    .dash-title{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .dash-title strong{font-size:14px; letter-spacing:.2px}
+    .dash-title span{font-size:12px; color:var(--muted2)}
+    .dash-chip{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      color: var(--text);
+      color:rgba(255,255,255,.78);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .dash-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .stat{
+      padding:12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .stat .k{font-size:12px; color:var(--muted2); margin-bottom:6px}
+    .stat .v{
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+      font-weight:850;
+      letter-spacing:-.2px;
+    }
+    .stat .v b{font-size:20px}
+    .stat .v small{font-size:12px; color:rgba(255,255,255,.70); font-weight:650}
+    .chart{
+      grid-column: 1 / -1;
+      padding:12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .chart-head{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      margin-bottom:10px;
+    }
+    .chart-head span{font-size:12px; color:var(--muted2)}
+    .bars{
+      display:flex; align-items:flex-end; gap:8px;
+      height:88px;
+      padding:10px 6px 6px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .bar{
+      width: 100%;
+      border-radius: 10px 10px 6px 6px;
+      background: linear-gradient(180deg, rgba(109,92,255,.85), rgba(34,211,238,.35));
+      opacity:.92;
+      box-shadow: 0 10px 18px rgba(0,0,0,.25);
+    }
+    .bar.dim{opacity:.45}
+    .dash-bottom{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .listbox{
+      padding:12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .listbox h4{
+      margin:0 0 10px;
+      font-size:12px;
+      color:rgba(255,255,255,.80);
+      letter-spacing:.2px;
       font-weight:800;
-      font-size: 12px;
+    }
+    .row{
+      display:flex; justify-content:space-between; gap:10px;
+      padding:9px 10px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.06);
+      margin-bottom:8px;
+      color:rgba(255,255,255,.82);
+      font-size:12px;
+    }
+    .row:last-child{margin-bottom:0}
+    .row .left{display:flex; flex-direction:column; gap:2px}
+    .row .left span{color:var(--muted2); font-size:11px}
+    .row .right{color:rgba(255,255,255,.72); font-weight:700}
+
+    /* UPGRADED PASS MOCK */
+    .pass{
+      margin-top:12px;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(550px 240px at 30% 0%, rgba(109,92,255,.22), transparent 60%),
+        radial-gradient(480px 240px at 85% 30%, rgba(34,211,238,.14), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding:14px;
+      box-shadow: var(--shadow2);
+    }
+    .pass-card{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(380px 160px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
+        rgba(7,10,18,.60);
+      padding: 14px;
+      overflow:hidden;
+      position:relative;
+    }
+    .pass-head{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+      margin-bottom:12px;
+    }
+    .pass-brand{
+      display:flex; align-items:center; gap:10px;
+    }
+    .pass-logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(109,92,255,.95), rgba(34,211,238,.70));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.28);
+    }
+    .pass-brand strong{display:block; font-size:14px; letter-spacing:.2px}
+    .pass-brand span{display:block; font-size:12px; color:var(--muted2); margin-top:2px}
+    .wallet-badge{
+      padding:8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.80);
+      font-size:12px;
+      font-weight:750;
+      white-space:nowrap;
+    }
+    .pass-metrics{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin: 10px 0 12px;
+    }
+    .metric{
+      padding:10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .metric .k{font-size:11px; color:var(--muted2); margin-bottom:6px}
+    .metric .v{font-size:16px; font-weight:900; letter-spacing:-.2px}
+    .barcode{
+      margin-top:8px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+      padding: 12px;
+    }
+    .barcode-top{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      color:rgba(255,255,255,.78);
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    .bars2{
+      height:44px;
+      border-radius: 12px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,.65) 0px,
+          rgba(255,255,255,.65) 2px,
+          rgba(255,255,255,.10) 2px,
+          rgba(255,255,255,.10) 6px
+        );
+      opacity:.25;
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .pass-actions{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top:12px;
     }
 
-    .section{padding: 34px 0;}
-    .section h2{font-size: 28px; margin: 0 0 10px;}
-    .section p{color: var(--muted); margin:0 0 16px; line-height:1.6;}
-    .cards{
-      display:grid; grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+    /* SECTIONS */
+    section{padding: 30px 0;}
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:14px;
+      margin-bottom: 14px;
     }
-    @media (max-width: 900px){ .cards{grid-template-columns: 1fr;} }
+    h2{
+      margin:0;
+      font-size: clamp(22px, 2.2vw, 30px);
+      letter-spacing:-.3px;
+    }
+    .section-desc{
+      margin:0;
+      color:var(--muted);
+      max-width: 60ch;
+      line-height:1.55;
+      font-size:15px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
     .card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
       border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
       padding: 16px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.28);
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
     }
-    .card h3{margin: 10px 0 6px; font-size: 16px;}
-    .card p{margin:0; color: var(--muted); font-size: 14px;}
+    .card:hover{border-color: rgba(255,255,255,.16);}
+    .card h3{margin:8px 0 6px; font-size:16px; letter-spacing:-.2px}
+    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.5}
     .icon{
-      width:38px;height:38px;border-radius: 14px;
-      display:flex; align-items:center; justify-content:center;
-      background: rgba(124,58,237,.12);
-      border:1px solid rgba(124,58,237,.25);
+      width:38px; height:38px; border-radius: 12px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(109,92,255,.22), rgba(34,211,238,.14));
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.85);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.3px;
     }
-    .icon svg{opacity:.95}
-    .how{
-      display:grid; grid-template-columns: repeat(3,1fr);
-      gap: 14px;
-    }
-    @media (max-width: 900px){ .how{grid-template-columns: 1fr;} }
-    .step{
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding: 16px;
-    }
-    .num{font-weight: 1000; color: rgba(255,255,255,.85); font-size: 14px;}
-    .step h3{margin: 8px 0 6px; font-size: 16px;}
-    .step p{margin:0; color: var(--muted); font-size: 14px; line-height:1.6;}
 
-    .pricing{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
     }
-    @media (max-width: 900px){ .pricing{grid-template-columns: 1fr;} }
-    .priceCard{
+    .step{
+      padding: 16px;
       border-radius: var(--radius);
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .step .num{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:28px; height:28px; border-radius:999px;
+      background: rgba(109,92,255,.20);
+      border:1px solid rgba(109,92,255,.35);
+      font-weight:800; font-size:13px;
+      margin-bottom:10px;
+    }
+    .step h3{margin:0 0 6px; font-size:16px}
+    .step p{margin:0; color:var(--muted); font-size:14px; line-height:1.5}
+
+    /* PRICING */
+    .pricing{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .price-card{
+      padding: 18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .price-card.featured{
+      border-color: rgba(109,92,255,.35);
+    }
+    .price-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+    .price-name{font-weight:850; font-size:18px; margin:0}
+    .price-tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
+      color:var(--muted); font-size:13px;
+      width:max-content;
+    }
+    .price{
+      margin: 10px 0 2px;
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing:-.6px;
+    }
+    .price small{font-size:14px; color:var(--muted); font-weight:600}
+    .list{margin: 12px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    .list li{color:var(--muted); font-size:14px; display:flex; gap:10px; align-items:flex-start}
+    .bullet{
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(255,255,255,.20);
+      border: 1px solid rgba(255,255,255,.18);
+      margin-top:6px;
+      flex:0 0 auto;
+    }
+    .price-actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+
+    /* FORM */
+    .form{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:start;
+    }
+    form{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
       padding: 18px;
     }
-    .price{font-size: 36px; font-weight: 1000; margin: 10px 0 2px;}
-    ul{margin: 12px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.8;}
-    .footer{
-      border-top:1px solid var(--line);
-      margin-top: 30px;
-      padding: 18px 0 30px;
+    label{display:block; font-size:13px; color:var(--muted); margin: 10px 0 6px}
+    input, textarea, select{
+      width:100%;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,18,.60);
+      color: rgba(255,255,255,.9);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height: 110px; resize: vertical}
+    input:focus, textarea:focus, select:focus{border-color: rgba(109,92,255,.40);}
+    .form-actions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+    .aside{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      padding: 18px;
+    }
+    .aside h3{margin:0 0 8px; font-size:16px}
+    .aside p{margin:0 0 10px; color:var(--muted); font-size:14px; line-height:1.5}
+    .mini{
+      display:grid; gap:10px; margin-top: 12px;
+    }
+    .mini .mini-card{
+      padding: 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       color: var(--muted);
       font-size: 13px;
-      display:flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      line-height: 1.45;
     }
 
-    /* form */
-    form{display:grid; gap: 10px; margin-top: 10px;}
-    input, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.25);
-      color: var(--text);
-      outline:none;
+    /* FOOTER */
+    footer{
+      padding: 28px 0 40px;
+      color: var(--muted2);
+      font-size: 13px;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top: 24px;
     }
-    textarea{min-height: 110px; resize: vertical;}
-    input::placeholder, textarea::placeholder{color: rgba(156,163,175,.75);}
-    .note{color: var(--muted); font-size: 12px; line-height: 1.6;}
+    .foot{
+      display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+    }
+    .foot a{color: var(--muted); padding:6px 10px; border-radius:10px}
+    .foot a:hover{background:rgba(255,255,255,.06); color:rgba(255,255,255,.86)}
+
+    /* RESPONSIVE */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr; }
+      .grid-3{grid-template-columns: 1fr;}
+      .steps{grid-template-columns: 1fr;}
+      .pricing{grid-template-columns: 1fr;}
+      .form{grid-template-columns: 1fr;}
+      .nav-links{display:none}
+      .menu{display:inline-flex}
+      .dash-bottom{grid-template-columns: 1fr;}
+      .dash-grid{grid-template-columns: 1fr;}
+    }
   </style>
 </head>
 
 <body>
   <div class="nav">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      Retainly
+    <div class="container">
+      <div class="nav-inner">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span>Retainly</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#demo">Demo</a>
+        </div>
+
+        <div class="nav-cta">
+          <a class="btn small menu" href="#demo">Request demo</a>
+          <a class="btn small" href="#pricing">See pricing</a>
+          <a class="btn small primary" href="#demo">Request demo</a>
+        </div>
+      </div>
     </div>
-    <div class="navlinks">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#demo">Request demo</a>
-    </div>
-    <a class="btn primary" href="#demo">Get a demo</a>
   </div>
 
-  <div class="wrap hero">
-    <div class="grid">
-      <div>
-        <div class="pill"><span class="dot"></span> No app. Works with Apple Wallet.</div>
-        <h1>Loyalty & prepaid, stored in Apple Wallet.</h1>
+  <main id="top">
+    <div class="container">
+      <section class="hero">
+        <div class="pill"><span class="dot"></span> Works with digital wallets (Apple Wallet and Google Pay)</div>
+        <h1>Loyalty and prepaid programs, stored in a digital wallet.</h1>
         <p class="sub">
-          Retainly helps restaurants create points rewards, prepaid meal bundles, subscriptions, and punch cards —
-          delivered as a digital pass in Apple Wallet. Customers scan, balance updates automatically, and you can send push notifications.
+          Retainly helps restaurants run <b>points</b>, <b>prepaid meal bundles</b>, <b>subscriptions</b>, and <b>digital punch cards</b>.
+          Customers scan at checkout and balances update automatically, and you can send wallet notifications to bring customers back.
         </p>
 
-        <div class="cta">
+        <div class="hero-actions">
           <a class="btn primary" href="#demo">Request a demo</a>
-          <a class="btn" href="#features">See features</a>
+          <a class="btn" href="#features">Explore features</a>
         </div>
 
-        <div class="small">
-          Built for cafés, fast-casual, and lunch spots. <b>Montreal-first.</b>
+        <div class="note">
+          <span>Fast setup</span>
+          <span>QR and barcode scanning</span>
+          <span>Automatic balance updates</span>
+          <span>Wallet notifications</span>
         </div>
-      </div>
 
-      <div class="mock" aria-label="Apple Wallet pass mockup">
-        <div class="mockTop">
-          <span>Demo pass preview</span>
-          <span>Apple Wallet style</span>
-        </div>
-        <div class="mockBody">
-          <div class="pass">
-            <div class="passHead">
-              <div class="passTitle">Retainly Café</div>
-              <div class="badge">POINTS</div>
-            </div>
-            <div class="balance">128 pts</div>
-            <div class="row">
-              <div>Next reward</div>
-              <div>150 pts</div>
-            </div>
-            <div class="row" style="margin-top:6px;">
-              <div>Status</div>
-              <div>Gold</div>
-            </div>
-            <div class="code">
-              <span>Scan at checkout</span>
-              <span># RTN-48291</span>
+        <div class="hero-grid">
+          <!-- Restaurant Dashboard -->
+          <div class="panel">
+            <div class="panel-inner">
+              <div class="badge">Built for cafés, lunch spots, and fast-casual restaurants</div>
+
+              <div class="dash" aria-label="Restaurant dashboard preview">
+                <div class="dash-top">
+                  <div class="dash-title">
+                    <strong>Restaurant Dashboard</strong>
+                    <span>Overview and performance</span>
+                  </div>
+                  <div class="dash-chip">Today</div>
+                </div>
+
+                <div class="dash-grid">
+                  <div class="stat">
+                    <div class="k">Active passes</div>
+                    <div class="v"><b>428</b> <small>+12%</small></div>
+                  </div>
+                  <div class="stat">
+                    <div class="k">Prepaid revenue</div>
+                    <div class="v"><b>$3,240</b> <small>+8%</small></div>
+                  </div>
+
+                  <div class="chart">
+                    <div class="chart-head">
+                      <span>Weekly scans</span>
+                      <span>Last 7 days</span>
+                    </div>
+                    <div class="bars" aria-hidden="true">
+                      <div class="bar dim" style="height:34%"></div>
+                      <div class="bar" style="height:58%"></div>
+                      <div class="bar dim" style="height:46%"></div>
+                      <div class="bar" style="height:72%"></div>
+                      <div class="bar" style="height:64%"></div>
+                      <div class="bar dim" style="height:40%"></div>
+                      <div class="bar" style="height:78%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dash-bottom">
+                  <div class="listbox">
+                    <h4>Recent activity</h4>
+                    <div class="row">
+                      <div class="left"><div>Lunch Bundle</div><span>Redeemed at checkout</span></div>
+                      <div class="right">2m ago</div>
+                    </div>
+                    <div class="row">
+                      <div class="left"><div>Points Reward</div><span>Reward unlocked</span></div>
+                      <div class="right">18m ago</div>
+                    </div>
+                    <div class="row">
+                      <div class="left"><div>Monthly Pass</div><span>Usage recorded</span></div>
+                      <div class="right">1h ago</div>
+                    </div>
+                  </div>
+
+                  <div class="listbox">
+                    <h4>Top programs</h4>
+                    <div class="row">
+                      <div class="left"><div>Prepaid meals</div><span>10 meals bundle</span></div>
+                      <div class="right">41%</div>
+                    </div>
+                    <div class="row">
+                      <div class="left"><div>Points</div><span>Spend-to-earn</span></div>
+                      <div class="right">33%</div>
+                    </div>
+                    <div class="row">
+                      <div class="left"><div>Punch card</div><span>Buy 8 get 1</span></div>
+                      <div class="right">26%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="height:10px"></div>
+              <div class="badge">Scan at checkout to update balance</div>
             </div>
           </div>
 
-          <div style="margin-top:14px; color: var(--muted); font-size: 13px; line-height:1.6;">
-            Restaurants can send Apple Wallet notifications like:
-            <b style="color:var(--text)">“2x points today until 5pm.”</b>
+          <!-- Customer Pass -->
+          <div class="panel">
+            <div class="panel-inner">
+              <div class="badge">Customer pass (digital wallet)</div>
+
+              <div class="pass" aria-label="Customer pass preview">
+                <div class="pass-card">
+                  <div class="pass-head">
+                    <div class="pass-brand">
+                      <div class="pass-logo" aria-hidden="true"></div>
+                      <div>
+                        <strong>Retainly Pass</strong>
+                        <span>Points, bundles, subscriptions</span>
+                      </div>
+                    </div>
+                    <div class="wallet-badge">Digital wallet</div>
+                  </div>
+
+                  <div class="pass-metrics">
+                    <div class="metric">
+                      <div class="k">Bundle balance</div>
+                      <div class="v">8 of 10 meals</div>
+                    </div>
+                    <div class="metric">
+                      <div class="k">Points</div>
+                      <div class="v">240</div>
+                    </div>
+                  </div>
+
+                  <div class="barcode">
+                    <div class="barcode-top">
+                      <span>Scan at checkout</span>
+                      <span>ID 4F29 81A2</span>
+                    </div>
+                    <div class="bars2" aria-hidden="true"></div>
+                  </div>
+
+                  <div class="pass-actions">
+                    <a class="btn primary" href="#demo" style="width:100%">Request demo</a>
+                    <a class="btn" href="#how" style="width:100%">How it works</a>
+                  </div>
+                </div>
+
+                <div style="height:10px"></div>
+                <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.45;">
+                  Customers add the pass to Apple Wallet or Google Pay. No new app to download. Staff scans a QR or barcode at checkout.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section id="features">
+        <div class="section-head">
+          <div>
+            <h2>Everything you need to drive repeat visits</h2>
+            <p class="section-desc">Pick the reward model that fits your restaurant. Change anytime. Track usage and revenue in one place.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">PL</div>
+            <h3>Points loyalty</h3>
+            <p>Earn points per purchase and redeem for rewards with simple rules and thresholds.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">PB</div>
+            <h3>Prepaid bundles</h3>
+            <p>Sell meals or drinks up front for predictable revenue and more frequent visits.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">SP</div>
+            <h3>Subscriptions</h3>
+            <p>Offer monthly passes or perks designed to keep customers coming back.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">DC</div>
+            <h3>Digital punch cards</h3>
+            <p>Replace paper stamp cards with a digital wallet pass customers keep.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">SU</div>
+            <h3>Scan and auto-update</h3>
+            <p>Scan a QR or barcode at checkout. Balance updates instantly for meals, points, or usage.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">WN</div>
+            <h3>Wallet notifications</h3>
+            <p>Send targeted notifications through the wallet to promote offers and bring customers back.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how">
+        <div class="section-head">
+          <div>
+            <h2>How it works</h2>
+            <p class="section-desc">Simple flow for customers and staff.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">01</div>
+            <h3>Create an offer</h3>
+            <p>Set points, bundles, punch cards, or a subscription. Add rules and rewards.</p>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <h3>Customer adds to a wallet</h3>
+            <p>They add the pass to Apple Wallet or Google Pay from a link or QR at your counter.</p>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <h3>Scan at checkout</h3>
+            <p>Staff scans the QR or barcode. Balance updates automatically and can trigger notifications.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="section-head">
+          <div>
+            <h2>Pricing</h2>
+            <p class="section-desc">Start with a demo or pilot, then scale to multiple locations.</p>
+          </div>
+        </div>
+
+        <div class="pricing">
+          <div class="price-card">
+            <div class="price-top">
+              <p class="price-name">Starter</p>
+              <span class="price-tag"><span class="dot"></span> Pilot</span>
+            </div>
+            <div class="price">$0 <small>demo / pilot</small></div>
+            <ul class="list">
+              <li><span class="bullet"></span> 1 location</li>
+              <li><span class="bullet"></span> 1 program (points or bundles)</li>
+              <li><span class="bullet"></span> Digital wallet pass</li>
+              <li><span class="bullet"></span> Email support</li>
+            </ul>
+            <div class="price-actions">
+              <a class="btn primary" href="#demo">Request free demo</a>
+              <a class="btn" href="#features">See features</a>
+            </div>
+          </div>
+
+          <div class="price-card featured">
+            <div class="price-top">
+              <p class="price-name">Pro</p>
+              <span class="price-tag"><span class="dot"></span> Growing teams</span>
+            </div>
+            <div class="price">Custom <small>per restaurant</small></div>
+            <ul class="list">
+              <li><span class="bullet"></span> Multiple locations</li>
+              <li><span class="bullet"></span> Points, bundles, subscriptions</li>
+              <li><span class="bullet"></span> Wallet notifications</li>
+              <li><span class="bullet"></span> Analytics and campaigns</li>
+            </ul>
+            <div class="price-actions">
+              <a class="btn primary" href="#demo">Talk to sales</a>
+              <a class="btn" href="#demo">Book a call</a>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin:12px 0 0; color:var(--muted2); font-size:13px; line-height:1.45;">
+          Tip: Start with a small pilot and measure repeat visits, prepaid revenue, and redemption rates.
+        </p>
+      </section>
+
+      <section id="demo">
+        <div class="section-head">
+          <div>
+            <h2>Request a demo</h2>
+            <p class="section-desc">Send your info and what you want to offer.</p>
+          </div>
+        </div>
+
+        <div class="form">
+          <form name="demo" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="demo" />
+
+            <label for="name">Your name</label>
+            <input id="name" name="name" placeholder="John" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+
+            <label for="restaurant">Restaurant name (optional)</label>
+            <input id="restaurant" name="restaurant" placeholder="Cafe XYZ" />
+
+            <label for="model">What do you want to offer?</label>
+            <select id="model" name="model" required>
+              <option value="">Select one</option>
+              <option>Points loyalty</option>
+              <option>Prepaid meal bundles</option>
+              <option>Subscription pass</option>
+              <option>Digital punch card</option>
+              <option>Not sure yet</option>
+            </select>
+
+            <label for="message">Details</label>
+            <textarea id="message" name="message" placeholder="Example: 10 coffees for $40, or 1 free item after 8 visits..."></textarea>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Send</button>
+              <a class="btn" href="#top">Back to top</a>
+            </div>
+          </form>
+
+          <div class="aside">
+            <h3>What you get in the demo</h3>
+            <p>
+              A walkthrough of the customer experience and how a restaurant sets up and scans a pass.
+              We can also recommend the best reward model for your restaurant type.
+            </p>
+
+            <div class="mini">
+              <div class="mini-card"><b>Pass preview</b><br/>Branding, barcode, balance display, and reward logic.</div>
+              <div class="mini-card"><b>Offer ideas</b><br/>Bundles and subscription examples for cafés and lunch spots.</div>
+              <div class="mini-card"><b>Next steps</b><br/>How to run a short pilot and measure repeat visits.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="foot">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="logo-mark" aria-hidden="true" style="width:26px; height:26px; border-radius:9px;"></span>
+              <span>© <span id="year"></span> Retainly. All rights reserved.</span>
+            </div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <a href="#features">Features</a>
+              <a href="#pricing">Pricing</a>
+              <a href="#demo">Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-  </div>
-
-  <div class="wrap section" id="features">
-    <h2>Everything restaurants need to drive repeat visits</h2>
-    <p>Pick the reward model that fits the business — and change anytime.</p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2l3 7h7l-5.6 4.1 2.1 7L12 16.8 5.5 20.2l2.1-7L2 9h7l3-7z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-        <h3>Points loyalty</h3>
-        <p>Earn points per purchase and redeem for rewards (like McDonald’s).</p>
-      </div>
-
-      <div class="card">
-        <div class="icon" aria-hidden="true" style="background:rgba(34,197,94,.12); border-color:rgba(34,197,94,.25);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M7 7h10v10H7V7z" stroke="currentColor" stroke-width="2"/>
-            <path d="M4 11h3M17 11h3" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-        <h3>Prepaid bundles</h3>
-        <p>Sell packages like “10 lunches” or “8 coffees” for upfront revenue.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-        <h3>Subscriptions</h3>
-        <p>Offer monthly coffee passes or lunch plans with usage tracking.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M6 6h12M6 18h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Digital punch cards</h3>
-        <p>Replace paper stamps with an Apple Wallet pass customers actually keep.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon" aria-hidden="true" style="background:rgba(34,197,94,.12); border-color:rgba(34,197,94,.25);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7h16v10H4V7z" stroke="currentColor" stroke-width="2"/>
-            <path d="M8 11h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Scan & auto-update</h3>
-        <p>Staff scans a code at checkout. Balances update instantly.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-        <h3>Apple Wallet notifications</h3>
-        <p>Send offers and reminders without forcing customers to download an app.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap section" id="how">
-    <h2>How it works</h2>
-    <p>Simple setup, simple checkout. Your customers keep the pass in Apple Wallet.</p>
-
-    <div class="how">
-      <div class="step">
-        <div class="num">01</div>
-        <h3>Create an offer</h3>
-        <p>Choose points, bundles, punch cards, or subscriptions. Customize rewards and branding.</p>
-      </div>
-      <div class="step">
-        <div class="num">02</div>
-        <h3>Customer adds to Wallet</h3>
-        <p>They tap “Add to Apple Wallet” — no app, no login, no friction.</p>
-      </div>
-      <div class="step">
-        <div class="num">03</div>
-        <h3>Scan & update</h3>
-        <p>At checkout, staff scans the pass. Balance updates automatically, and you can send notifications.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap section" id="pricing">
-    <h2>Pricing</h2>
-    <p>Start with a demo. Then choose a plan based on how many locations you manage.</p>
-
-    <div class="pricing">
-      <div class="priceCard">
-        <div class="pill"><span class="dot"></span> Starter</div>
-        <div class="price">$0</div>
-        <div style="color:var(--muted)">Demo / Pilot</div>
-        <ul>
-          <li>1 location</li>
-          <li>1 reward program</li>
-          <li>Basic Apple Wallet pass</li>
-          <li>Email support</li>
-        </ul>
-        <div class="cta" style="margin-top:16px;">
-          <a class="btn primary" href="#demo">Request free demo</a>
-        </div>
-      </div>
-
-      <div class="priceCard">
-        <div class="pill"><span class="dot"></span> Pro</div>
-        <div class="price">Custom</div>
-        <div style="color:var(--muted)">For growing restaurants</div>
-        <ul>
-          <li>Multiple locations</li>
-          <li>Points + bundles + subscriptions</li>
-          <li>Wallet push notifications</li>
-          <li>Analytics + campaigns</li>
-        </ul>
-        <div class="cta" style="margin-top:16px;">
-          <a class="btn" href="#demo">Talk to sales</a>
-        </div>
-      </div>
-    </div>
-
-    <p class="note" style="margin-top:14px;">
-      Tip: If you’re just starting, run a pilot with 1–3 restaurants and collect results (repeat visits, prepaid revenue, redemption rate).
-    </p>
-  </div>
-
-  <div class="wrap section" id="demo">
-    <h2>Request a demo</h2>
-    <p>Leave your info and you’ll get a demo link + sample Apple Wallet pass.</p>
-
-    <!-- Netlify Forms works automatically if you deploy this on Netlify -->
-    <div class="card">
-      <form name="demo" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="demo" />
-        <input name="name" placeholder="Your name" required />
-        <input name="email" type="email" placeholder="Email" required />
-        <input name="restaurant" placeholder="Restaurant name (optional)" />
-        <textarea name="message" placeholder="What do you want to offer? (points / bundles / subscription)"></textarea>
-        <button class="btn primary" type="submit">Send</button>
-        <div class="note">This form will work after you deploy it on Netlify (it uses Netlify Forms).</div>
-      </form>
-    </div>
-  </div>
-
-  <div class="wrap footer">
-    <div>© <span id="year"></span> Retainly. All rights reserved.</div>
-    <div style="display:flex; gap:14px;">
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#demo">Contact</a>
-    </div>
-  </div>
+  </main>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
