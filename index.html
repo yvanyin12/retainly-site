@@ -4,6 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Loyaltea — Wallet Loyalty for Restaurants</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" sizes="64x64">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
@@ -34,9 +36,9 @@
     /* ── NAV ─────────────────────────────── */
     .nav{position:sticky;top:0;z-index:200;background:rgba(14,9,4,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border2);}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
-    .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-size:20px;font-weight:600;color:var(--cream);}
-    .logo-m{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--sage2),var(--sage));display:grid;place-items:center;font-size:16px;font-weight:700;color:#0e0904;flex-shrink:0;transition:.2s;}
-    .logo:hover .logo-m{transform:scale(1.07);box-shadow:0 0 18px rgba(180,212,133,.35);}
+    .logo{display:flex;align-items:center;}
+    .logo-img{height:52px;width:auto;display:block;transition:.2s;}
+    .logo:hover .logo-img{opacity:.88;transform:scale(1.04);}
     .nav-links{display:flex;gap:2px;font-size:14px;}
     .nav-links a{padding:8px 14px;border-radius:9px;color:var(--muted);transition:.18s;}
     .nav-links a:hover{color:var(--cream);background:var(--panel2);}
@@ -396,7 +398,7 @@
 <nav class="nav">
   <div class="container">
     <div class="nav-inner">
-      <a class="logo" href="#top"><span class="logo-m">L</span>Loyaltea</a>
+      <a class="logo" href="#top"><img src="assets/loyaltea-logo-cup.png" alt="Loyaltea" class="logo-img"></a>
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#passes">Pass Types</a>
