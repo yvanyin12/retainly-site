@@ -25,13 +25,13 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:var(--body);background:var(--bg);color:var(--cream);overflow-x:hidden;}
+    body{font-family:var(--body);background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
     body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.022;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size:180px;}
     a{color:inherit;text-decoration:none}
     .wrap{position:relative;z-index:1}
-    .container{max-width:var(--max);margin:0 auto;padding:0 36px}
+    .container{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5.5vw,36px)}
 
     /* ── NAV ─────────────────────────────── */
     .nav{position:sticky;top:0;z-index:200;background:rgba(14,9,4,.85);backdrop-filter:blur(28px);border-bottom:1px solid var(--border2);}
@@ -238,7 +238,7 @@
     .feat-head{max-width:480px;margin-bottom:52px;}
     .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);border-radius:24px;overflow:hidden;}
     .fc{padding:36px 32px;background:var(--bg2);transition:.22s ease;cursor:default;}
-    .fc:hover{background:var(--bg3);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.35);}
+    .fc:hover{background:var(--bg3);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.35),inset 0 2px 0 rgba(180,212,133,.22);}
     .fc-kw{font-family:var(--display);font-size:36px;font-weight:600;color:var(--cream);margin-bottom:10px;line-height:1;letter-spacing:-.5px;transition:.2s;}
     .fc:hover .fc-kw{color:var(--sage2);text-shadow:0 0 20px rgba(180,212,133,.3);}
     .fc-sub{font-size:13px;color:var(--muted);line-height:1.55;max-width:26ch;}
@@ -389,6 +389,36 @@
     @media(max-width:960px){.how-grid,.cg,.pg{grid-template-columns:1fr;}.feat-grid{grid-template-columns:1fr 1fr;}}
     @media(max-width:768px){.nav-links{display:none;}.feat-grid{grid-template-columns:1fr;}.dkpis{grid-template-columns:1fr 1fr;}.rth,.rr{grid-template-columns:1.1fr 1.3fr .7fr .65fr;}.rth>*:nth-child(5),.rr>*:nth-child(5){display:none;}.fr{grid-template-columns:1fr;}section{padding:64px 0;}.cta-box{padding:44px 30px;}.metric-card{right:-20px;}.metric-card2{left:-14px;}}
     @media(max-width:520px){.pt-grid{grid-template-columns:1fr 1fr;}.hero-cta,.cta-acts{flex-direction:column;align-items:stretch;}}
+
+    /* ── POLISH ──────────────────────────── */
+    .btn:active{transform:translateY(0)!important;filter:brightness(.92);}
+    .pc.feat{box-shadow:0 0 0 1px rgba(140,185,106,.2),0 24px 52px rgba(0,0,0,.35);}
+    .foot-logo-img{height:36px;width:auto;display:block;}
+    .nav-links a.active{color:var(--cream);}
+
+    /* ── HAMBURGER ───────────────────────── */
+    .nav-burger{display:none;flex-direction:column;gap:5.5px;cursor:pointer;padding:9px 7px;border-radius:9px;background:transparent;border:none;margin-left:6px;}
+    .nav-burger span{display:block;width:20px;height:1.5px;background:var(--cream);border-radius:999px;transition:.22s;}
+    .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .nav-mobile{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:rgba(10,6,2,.97);backdrop-filter:blur(28px);z-index:190;padding:16px clamp(20px,5.5vw,36px);flex-direction:column;gap:3px;border-top:1px solid var(--border);}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{padding:13px 18px;border-radius:12px;color:var(--muted);font-size:16px;font-weight:400;transition:.18s;border:1px solid transparent;}
+    .nav-mobile a:hover,.nav-mobile a.active{color:var(--cream);background:var(--panel2);border-color:var(--border2);}
+    .nm-cta{display:flex;flex-direction:column;gap:8px;margin-top:12px;padding-top:16px;border-top:1px solid var(--border2);}
+    .nm-cta .btn{justify-content:center;width:100%;}
+
+    @media(max-width:768px){
+      .nav-burger{display:flex;}
+      .foot{flex-direction:column;align-items:flex-start;gap:16px;}
+      .fl{flex-wrap:wrap;}
+    }
+    @media(max-width:600px){
+      .sdiv{display:none;}
+      .spbar-inner{gap:16px 20px;}
+      .ss{flex-direction:row;gap:4px;align-items:baseline;}
+    }
   </style>
 </head>
 <body>
@@ -410,10 +440,27 @@
       <div class="nav-end">
         <a class="btn sm" href="#pricing">Pricing</a>
         <button class="btn sm p" data-cal>Book a demo</button>
+        <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="navMobile" aria-hidden="true">
+  <a href="#features">Features</a>
+  <a href="#passes">Pass Types</a>
+  <a href="#how">How it works</a>
+  <a href="#notify">Notifications</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact">Contact</a>
+  <div class="nm-cta">
+    <a class="btn" href="#pricing">Pricing</a>
+    <button class="btn p" id="mobileCalBtn">Book a demo</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <div id="top"><div class="container"><div class="hero">
@@ -851,7 +898,7 @@
 <footer>
   <div class="container">
     <div class="foot">
-      <div style="display:flex;align-items:center;gap:10px;"><span class="logo-m">L</span><span style="font-family:var(--display);font-size:18px;color:var(--cream);">Loyaltea</span></div>
+      <a class="logo" href="#top"><img src="assets/loyaltea-logo-cup.png" alt="Loyaltea" class="foot-logo-img"></a>
       <span style="font-size:13px;color:var(--muted2);">© <span id="yr"></span> Loyaltea</span>
       <div class="fl"><a href="#features">Features</a><a href="#passes">Pass Types</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
     </div>
@@ -918,6 +965,40 @@
     cur = (cur + 1) % words.length;
     showWord(cur);
   }, 2200);
+
+  // ── Hamburger menu ──────────────────────────────
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('navMobile');
+  function closeMenu() {
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    mobileMenu.classList.toggle('open');
+    mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a[href]').forEach(a => a.addEventListener('click', closeMenu));
+  document.getElementById('mobileCalBtn').addEventListener('click', () => { closeMenu(); openC(); });
+
+  // ── Active nav on scroll ────────────────────────
+  const navLinks = document.querySelectorAll('.nav-links a, .nav-mobile a[href^="#"]');
+  const secIds = ['features','passes','how','notify','pricing','contact'];
+  const secEls = secIds.map(id => document.getElementById(id)).filter(Boolean);
+  const activeObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '0px 0px -55% 0px', threshold: 0 });
+  secEls.forEach(el => activeObs.observe(el));
 </script>
 </body>
 </html>
